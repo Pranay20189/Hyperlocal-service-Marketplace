@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}ServeHub{% endblock %}</title>
+    <title>{% block title %}Service Marketplace{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     {% block extra_css %}{% endblock %}
@@ -14,7 +15,7 @@
     <div class="nav-container">
         <a href="{{ url_for('index') }}" class="nav-logo">
             <span class="logo-icon">⬡</span>
-            <span class="logo-text">ServeHub</span>
+            <span class="logo-text">Service Marketplace</span>
         </a>
         <div class="nav-links">
             <a href="{{ url_for('services') }}">Browse Services</a>
@@ -80,12 +81,12 @@
         </div>
         <div class="footer-contact">
             <h4>Contact</h4>
-            <p>support@servehub.com</p>
+            <p>support@Service Marketplace.com</p>
             <p>+91 98765 43210</p>
         </div>
     </div>
     <div class="footer-bottom">
-        <p>© 2024 ServeHub. All rights reserved.</p>
+        <p>© 2024 Service Marketplace. All rights reserved.</p>
     </div>
 </footer>
 

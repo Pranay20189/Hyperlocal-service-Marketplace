@@ -12,7 +12,7 @@ app.secret_key = 'servicemarket_secret_key_2024'
 # MySQL Configuration - Update these with your credentials
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Sathish@1'
+app.config['MYSQL_PASSWORD'] = 'Pranay@123'
 app.config['MYSQL_DB'] = 'service_marketplace'
 
 mysql = MySQL(app)

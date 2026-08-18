@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}ServeHub – Find Trusted Service Professionals{% endblock %}
+{% block title %}Service Marketplace – Find Trusted Service Professionals{% endblock %}
 {% block content %}
 
 <section class="hero">
@@ -110,11 +110,45 @@
         <div class="cta-band">
             <div class="cta-band-text">
                 <h2>Are you a skilled professional?</h2>
-                <p>Join thousands of workers earning through ServeHub. Set your own hours & rates.</p>
+                <p>Join thousands of workers earning through Service Marketplace. Set your own hours & rates.</p>
             </div>
             <a href="{{ url_for('register') }}" class="btn-cta-white">Join as a Worker →</a>
         </div>
     </div>
 </section>
+
+<!-- ✅ FEEDBACK SECTION -->
+<!-- ✅ MODERN FEEDBACK SECTION -->
+<section class="feedback-section">
+    <div class="container">
+        <h2 class="feedback-title">Give Your Feedback</h2>
+
+        <form id="feedbackForm">
+            <input type="text" id="name" placeholder="Your Name" required><br><br>
+            <textarea id="message" placeholder="Your Feedback" required></textarea><br><br>
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="feedbackList" class="feedback-grid"></div>
+    </div>
+</section>
+
+<script>
+document.getElementById("feedbackForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let message = document.getElementById("message").value;
+
+    let card = document.createElement("div");
+    card.className = "feedback-card";
+
+    card.innerHTML = `<p>"${message}"</p><h4>- ${name}</h4>`;
+
+    document.getElementById("feedbackList").appendChild(card);
+
+    document.getElementById("feedbackForm").reset();
+});
+</script>
 
 {% endblock %}

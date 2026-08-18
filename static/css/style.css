@@ -1,19 +1,19 @@
 /* ============================================================
-   SERVEHUB – Main Stylesheet
+   SERVICE MARKETPLACE – Main Stylesheet
    Fonts: Syne (display) + DM Sans (body)
    Palette: Deep charcoal + Electric amber + Off-white
    ============================================================ */
 
 :root {
-    --bg: #0e0e10;
+    --bg: #000101;
     --bg2: #16161a;
     --bg3: #1e1e24;
-    --surface: #242430;
+    --surface: #000000;
     --border: #2e2e3a;
-    --accent: #f5a623;
+    --accent: #f0901a;
     --accent2: #ff6b35;
-    --text: #e8e8f0;
-    --text2: #9090a8;
+    --text: #fcfcfc;
+    --text2: #f9f9f9;
     --user-color: #4a9eff;
     --worker-color: #f5a623;
     --success: #4caf7d;
@@ -50,7 +50,7 @@ img { max-width: 100%; }
 /* ── NAVBAR ─────────────────────────────────────────────── */
 .navbar {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(14,14,16,0.92);
+    background: #000;
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
 }
@@ -59,8 +59,8 @@ img { max-width: 100%; }
     padding: 0 24px; height: 66px;
     display: flex; align-items: center; gap: 32px;
 }
-.nav-logo { display: flex; align-items: center; gap: 8px; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; color: var(--text); }
-.logo-icon { font-size: 22px; color: var(--accent); }
+.nav-logo { display: flex; align-items: center; gap: 8px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; color: var(--text); }
+.logo-icon { font-size: 25px; color: var(--accent); }
 .nav-links { display: flex; align-items: center; gap: 24px; margin-left: auto; }
 .nav-links > a { color: var(--text2); font-size: 14px; font-weight: 500; transition: color .2s; }
 .nav-links > a:hover { color: var(--text); }
@@ -95,10 +95,10 @@ img { max-width: 100%; }
 .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .25; }
 .hero-orb-1 { width: 500px; height: 500px; background: var(--accent); top: -150px; right: -100px; }
 .hero-orb-2 { width: 300px; height: 300px; background: var(--accent2); bottom: 0; left: 10%; }
-.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 40px 40px; opacity: .3; }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px; }
 .hero-content { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--accent); background: rgba(245,166,35,.1); border: 1px solid rgba(245,166,35,.3); padding: 5px 14px; border-radius: 20px; margin-bottom: 24px; }
-.hero-title { font-size: clamp(40px, 6vw, 76px); font-weight: 800; letter-spacing: -.02em; margin-bottom: 20px; }
+.hero-title { font-size: clamp(40px, 6vw, 56px); font-weight: 800; letter-spacing: -.02em; margin-bottom: 20px; }
 .hero-accent { color: var(--accent); }
 .hero-subtitle { font-size: 18px; color: var(--text2); max-width: 520px; margin-bottom: 36px; }
 .hero-search { display: flex; gap: 0; max-width: 540px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
@@ -113,7 +113,7 @@ img { max-width: 100%; }
 .stat-card { flex: 1; background: var(--surface); border: 1px solid var(--border); padding: 28px 32px; text-align: center; }
 .stat-card:first-child { border-radius: var(--r) 0 0 var(--r); }
 .stat-card:last-child { border-radius: 0 var(--r) var(--r) 0; }
-.stat-num { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; color: var(--accent); }
+.stat-num { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 600; color: var(--accent); }
 .stat-label { font-size: 13px; color: var(--text2); margin-top: 4px; }
 
 /* ── HOW IT WORKS ─────────────────────────────────────── */
@@ -126,7 +126,7 @@ img { max-width: 100%; }
 .step-card:hover { border-color: var(--accent); }
 .step-num { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; color: var(--border); position: absolute; top: 20px; right: 24px; line-height: 1; }
 .step-icon { font-size: 36px; margin-bottom: 16px; }
-.step-card h3 { font-size: 20px; margin-bottom: 10px; }
+.step-card h3 { font-size: 15px; margin-bottom: 10px; }
 .step-card p { color: var(--text2); font-size: 15px; }
 
 /* ── WORKERS GRID ────────────────────────────────────── */
@@ -137,8 +137,8 @@ img { max-width: 100%; }
 .worker-card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
 .worker-avatar { width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; color: #000; flex-shrink: 0; }
 .worker-info { flex: 1; }
-.worker-info h3 { font-size: 16px; margin: 0; }
-.worker-category { font-size: 12px; color: var(--accent); font-weight: 600; }
+.worker-info h3 { font-size: 14px; margin: 0; }
+.worker-category { font-size: 6px; color: var(--accent); font-weight: 600; }
 .avail-badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: rgba(76,175,125,.15); color: var(--success); border: 1px solid rgba(76,175,125,.3); margin-left: auto; flex-shrink: 0; }
 .avail-badge.unavail { background: rgba(255,82,82,.1); color: var(--danger); border-color: rgba(255,82,82,.2); }
 .worker-bio { font-size: 13px; color: var(--text2); margin-bottom: 12px; }
@@ -404,4 +404,45 @@ img { max-width: 100%; }
     .form-row { grid-template-columns: 1fr; }
     .dashboard-main { padding: 20px 16px; }
     .footer-inner { grid-template-columns: 1fr; }
+}
+  .feedback {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.feedback form {
+    max-width: 400px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.feedback input,
+.feedback textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    color: var(--text);
+    outline: none;
+}
+
+.feedback input:focus,
+.feedback textarea:focus {
+    border-color: var(--accent);
+}
+
+.feedback button {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: var(--accent);
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.feedback button:hover {
+    opacity: 0.85;
 }

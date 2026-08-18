@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Book {{ worker.name }} – ServeHub{% endblock %}
+{% block title %}Book {{ worker.name }} – Service Marketplace{% endblock %}
 {% block content %}
 
 <div class="booking-page container">
@@ -83,7 +83,7 @@
 </div>
 
 <script>
-const rate = {{ worker.hourly_rate }};
+const rate = parseFloat("{{ worker.hourly_rate }}");
 function calcTotal() {
     const dur = parseFloat(document.getElementById('duration-select').value);
     document.getElementById('summary-duration', ).textContent = dur + ' hr' + (dur > 1 ? 's' : '');
