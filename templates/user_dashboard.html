@@ -61,6 +61,12 @@
                     <div class="booking-right">
                         <span class="status-badge status-{{ b.status }}">{{ b.status|title }}</span>
                         <div class="booking-amount">₹{{ "%.0f"|format(b.total_amount) }}</div>
+                        {% if b.status == 'in_progress' %}
+                        <div class="otp-badge">
+                            <strong>{{ b.otp }}</strong>
+                            <span>Share this OTP with the service provider upon completion</span>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
                 {% endfor %}

@@ -7,11 +7,14 @@
         <div class="container">
             <h1>Browse <span class="accent">Services</span></h1>
             <form action="{{ url_for('services') }}" method="GET" class="services-search-bar">
-                <input type="text" name="search" value="{{ search }}" placeholder="Search by name, skill or category...">
+                <input type="text" name="service_type" value="{{ service_type }}" placeholder="Search service type...">
+                <input type="text" name="location" value="{{ location }}" placeholder="Location / City">
+                <input type="text" name="pincode" value="{{ pincode }}" placeholder="Pincode">
                 {% if selected_category %}
                 <input type="hidden" name="category" value="{{ selected_category }}">
                 {% endif %}
                 <button type="submit">Search</button>
+                <a href="{{ url_for('services') }}" class="clear-filters">Reset</a>
             </form>
         </div>
     </div>
@@ -32,9 +35,11 @@
             <div class="results-bar">
                 <span>{{ workers|length }} professionals found
                 {% if selected_category %} in <strong>{{ selected_category }}</strong>{% endif %}
-                {% if search %} for <strong>"{{ search }}"</strong>{% endif %}
+                {% if service_type %} for <strong>"{{ service_type }}"</strong>{% endif %}
+                {% if location %} in <strong>{{ location }}</strong>{% endif %}
+                {% if pincode %} at <strong>{{ pincode }}</strong>{% endif %}
                 </span>
-                {% if selected_category or search %}
+                {% if selected_category or service_type or location or pincode %}
                 <a href="{{ url_for('services') }}" class="clear-filters">✕ Clear filters</a>
                 {% endif %}
             </div>

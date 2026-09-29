@@ -50,6 +50,7 @@ CREATE TABLE bookings (
     notes TEXT,
     total_amount DECIMAL(10,2) DEFAULT 0.00,
     status ENUM('pending','confirmed','in_progress','completed','cancelled') DEFAULT 'pending',
+    otp CHAR(4),
     rating TINYINT(1),
     review TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

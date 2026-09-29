@@ -74,9 +74,13 @@
                         <button name="status" value="in_progress" class="btn-status progress">▶ Start Work</button>
                         <button name="status" value="cancelled" class="btn-status cancel">✕ Cancel</button>
                         {% elif b.status == 'in_progress' %}
-                        <button name="status" value="completed" class="btn-status complete">✓ Mark Complete</button>
+                        <input type="text" name="otp" form="complete-booking-{{ b.id }}" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required placeholder="4-digit OTP">
+                        <button type="submit" form="complete-booking-{{ b.id }}" class="btn-status complete">Verify &amp; Complete</button>
                         {% endif %}
                     </form>
+                    {% if b.status == 'in_progress' %}
+                    <form id="complete-booking-{{ b.id }}" method="POST" action="{{ url_for('complete_booking', booking_id=b.id) }}"></form>
+                    {% endif %}
                 </div>
                 {% endif %}
 

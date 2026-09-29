@@ -71,6 +71,12 @@
                     <div class="booking-right">
                         <span class="status-badge status-{{ b.status }}">{{ b.status|title }}</span>
                         <div class="booking-amount">₹{{ "%.0f"|format(b.total_amount) }}</div>
+                        {% if b.status == 'in_progress' %}
+                        <form method="POST" action="{{ url_for('complete_booking', booking_id=b.id) }}" class="otp-form">
+                            <input type="text" name="otp" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required placeholder="4-digit OTP">
+                            <button type="submit" class="btn-status complete">Verify &amp; Complete</button>
+                        </form>
+                        {% endif %}
                     </div>
                 </div>
                 {% endfor %}
