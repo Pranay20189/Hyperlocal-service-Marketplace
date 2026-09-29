@@ -21,6 +21,13 @@ A full-stack service marketplace web app built with **Flask + MySQL + HTML/CSS**
 | Frontend  | HTML5 / CSS3 / Vanilla JS |
 | Auth      | SHA-256 hashed passwords + Flask sessions |
 
+## How to Run This Project
+
+1. Clone repository:
+   ```bash
+   git clone [https://github.com/Pranay20189/hyperlocal-service-Marketplace.git](https://github.com/Pranay20189/hyperlocal-service-Marketplace.git)
+   cd hyperlocal-service-Marketplace
+   
 ## Project Structure
 
 ```
