@@ -27,7 +27,6 @@ A full-stack service marketplace web app built with **Flask + MySQL + HTML/CSS**
    ```bash
    git clone [https://github.com/Pranay20189/hyperlocal-service-Marketplace.git](https://github.com/Pranay20189/hyperlocal-service-Marketplace.git)
    cd hyperlocal-service-Marketplace
-   
 ## Project Structure
 
 ```
