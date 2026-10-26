@@ -19,13 +19,13 @@ if not app.secret_key:
     raise RuntimeError("FLASK_SECRET_KEY is missing from the .env file")
 
 # MySQL Configuration
-# MySQL Configuration
 app.config['MYSQL_HOST'] = os.getenv("MYSQL_HOST", "localhost")
 app.config['MYSQL_USER'] = os.getenv("MYSQL_USER", "root")
 app.config['MYSQL_PASSWORD'] = os.getenv("MYSQL_PASSWORD", "")
 app.config['MYSQL_DB'] = os.getenv("MYSQL_DB", "service_marketplace")
 app.config['MYSQL_PORT'] = int(os.getenv("MYSQL_PORT", 4000))
-app.config['MYSQL_CUSTOM_OPTIONS'] = {'ssl': {'ssl_mode': 'REQUIRED'}}
+app.config['MYSQL_SSL_CA'] = os.getenv("MYSQL_SSL_CA", "/etc/ssl/certs/ca-certificates.crt")
+
 # Email Configuration
 app.config["MAIL_SERVER"] = os.getenv("MAIL_SERVER", "smtp.gmail.com")
 app.config["MAIL_PORT"] = int(os.getenv("MAIL_PORT", "587"))
