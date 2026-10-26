@@ -389,23 +389,22 @@ def rate_booking(booking_id):
 # SERVICES BROWSE
 @app.route("/services")
 def services():
-    category = request.args.get("category", "")
-    service_type = request.args.get("service_type", "")
-    location = request.args.get("location", "")
-    pincode = request.args.get("pincode", "")
+    category = request.args.get("category", "").strip()
+    service_type = request.args.get("service_type", "").strip()
+    location = request.args.get("location", "").strip()
+    pincode = request.args.get("pincode", "").strip()
 
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 
     query = """
-        SELECT w.*, AVG(b.rating) AS avg_rating,
-               COUNT(b.id) AS total_reviews
+        SELECT w.*,
+               COALESCE(AVG(r.rating), 0) AS avg_rating,
+               COUNT(DISTINCT b.id) AS total_bookings
         FROM workers w
-        LEFT JOIN users u ON w.email = u.email
-        LEFT JOIN bookings b
-            ON w.id = b.worker_id AND b.rating IS NOT NULL
-        WHERE w.is_available = 1
+        LEFT JOIN bookings b ON w.id = b.worker_id
+        LEFT JOIN reviews r ON w.id = r.worker_id
+        WHERE 1=1
     """
-
     params = []
 
     if category:
@@ -417,8 +416,8 @@ def services():
         params.append(f"%{service_type}%")
 
     if location:
-        query += " AND w.location LIKE %s"
-        params.append(f"%{location}%")
+        query += " AND (w.city LIKE %s OR w.pincode LIKE %s)"
+        params.extend([f"%{location}%", f"%{location}%"])
 
     if pincode:
         query += " AND w.pincode LIKE %s"
@@ -429,9 +428,7 @@ def services():
     cursor.execute(query, params)
     workers = cursor.fetchall()
 
-    cursor.execute(
-        "SELECT DISTINCT category FROM workers ORDER BY category"
-    )
+    cursor.execute("SELECT DISTINCT category FROM workers ORDER BY category")
     categories = cursor.fetchall()
     cursor.close()
 
