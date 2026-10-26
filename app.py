@@ -90,7 +90,7 @@ def index():
     """)
     featured_workers = cursor.fetchall()
     
-    cursor.execute("SELECT DISTINCT service_type AS category FROM workers ORDER BY service_type")
+    cursor.execute("SELECT DISTINCT category FROM workers ORDER BY category")
     categories = cursor.fetchall()
     cursor.close()
 
