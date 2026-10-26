@@ -78,19 +78,19 @@ def read_password_reset_token(token):
 def index():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute("""
-        SELECT w.*,
-               AVG(b.rating) AS avg_rating,
-               COUNT(b.id) AS total_bookings
+        SELECT w.*, 
+               COALESCE(AVG(r.rating), 0) AS avg_rating,
+               COUNT(DISTINCT b.id) AS total_bookings
         FROM workers w
-        LEFT JOIN bookings b
-            ON w.id = b.worker_id AND b.rating IS NOT NULL
+        LEFT JOIN bookings b ON w.id = b.worker_id
+        LEFT JOIN reviews r ON w.id = r.worker_id
         GROUP BY w.id
         ORDER BY avg_rating DESC
         LIMIT 6
     """)
     featured_workers = cursor.fetchall()
-
-    cursor.execute("SELECT DISTINCT category FROM workers ORDER BY category")
+    
+    cursor.execute("SELECT DISTINCT service_type AS category FROM workers ORDER BY service_type")
     categories = cursor.fetchall()
     cursor.close()
 
