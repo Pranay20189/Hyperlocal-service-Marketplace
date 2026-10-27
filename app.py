@@ -537,10 +537,11 @@ def book_service(worker_id):
         mysql.connection.commit()
         cursor.close()
 
-        send_email(
-            worker["email"],
-            "New Service Booking Received",
-            f"""Hello {worker['name']},
+        try:
+            send_email(
+                worker["email"],
+                "New Service Booking Received",
+                f"""Hello {worker['name']},
 
 You have received a new service booking from {customer['name']}.
 
@@ -552,12 +553,12 @@ Address: {address}
 Notes: {notes or 'None'}
 Total amount: Rs. {total_amount:.2f}
 """
-        )
+            )
 
-        send_email(
-            customer["email"],
-            "Booking Confirmation - Service Marketplace",
-            f"""Hello {customer['name']},
+            send_email(
+                customer["email"],
+                "Booking Confirmation - Service Marketplace",
+                f"""Hello {customer['name']},
 
 Your booking with {worker['name']} has been confirmed.
 
@@ -569,7 +570,9 @@ Total amount: Rs. {total_amount:.2f}
 
 You will receive further updates as the worker processes your booking.
 """
-        )
+            )
+        except Exception as e:
+            print(f"Email failed to send: {e}")
 
         flash("Booking confirmed successfully!", "success")
         return redirect(url_for("user_bookings"))
