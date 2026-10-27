@@ -738,19 +738,19 @@ def update_booking_status(booking_id):
     cursor.close()
 
     if status in {"confirmed", "in_progress"}:
-        send_email(
-            booking["customer_email"],
-            f"Booking Status Updated: {status.replace('_', ' ').title()}",
-            f"""Hello {booking['customer_name']},
+        try:
+            send_email(
+                booking["customer_email"],
+                f"Booking Status Updated: {status.replace('_', ' ').title()}",
+                f"""Hello {booking['customer_name']},
 
 Your booking with {booking['worker_name']} is now {status.replace('_', ' ')}.
 
 Please check your dashboard for the latest booking details.
 """
-        )
-
-    flash(f"Booking status updated to {status}!", "success")
-    return redirect(url_for("worker_bookings"))
+            )
+        except Exception as e:
+            print(f"Status update email failed safely: {e}")
 
 
 # COMPLETE BOOKING USING OTP
