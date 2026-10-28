@@ -42,8 +42,8 @@ password_reset_serializer = URLSafeTimedSerializer(app.secret_key)
 
 
 def send_email(to_email, subject, body):
-    """Send email without interrupting the booking workflow if mail fails."""
-    if not to_email:
+    """Send email without interrupting workflow, skip immediately if not configured."""
+    if not to_email or not app.config.get("MAIL_USERNAME"):
         return False
     try:
         message = Message(subject=subject, recipients=[to_email], body=body)
