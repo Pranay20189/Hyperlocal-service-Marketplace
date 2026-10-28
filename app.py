@@ -752,6 +752,8 @@ Please check your dashboard for the latest booking details.
         except Exception as e:
             print(f"Status update email failed safely: {e}")
 
+    flash(f"Booking status updated to {status}!", "success")
+    return redirect(url_for("worker_bookings"))
 
 # COMPLETE BOOKING USING OTP
 @app.route("/complete_booking/<int:booking_id>", methods=["POST"])
